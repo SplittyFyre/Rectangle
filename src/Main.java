@@ -3,17 +3,27 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//Rectangle blue = new Rectangle(-7, -3, 9, 5);
-		Rectangle blue = new Rectangle(1, -3, 9, 10);
-		//Rectangle blue = new Rectangle(-100, -3, 9, 10);
-		//Rectangle green = new Rectangle(-1, 0, 6, 4);
-		Rectangle green = new Rectangle(-3, -7, 6, 4);
+		Rectangle blue = new Rectangle(10, -30, 90, 100);
+		blue.setColour(0, 0, 1, 0.5f);
+		Rectangle green = new Rectangle(-90, 0, 600, 40);
+		green.setColour(0, 1, 0, 0.5f);
 		
 		System.out.println(blue);
 		System.out.println(green);
-		System.out.println();
 		System.out.println(Rectangle.intersection(blue, green));
-
+		System.out.println(Rectangle.totalPerimeter(blue, green));
+		
+		
+		
+		RectangleDrawer drawer = new RectangleDrawer(600, 600);
+		drawer.addRectangle(blue);
+		drawer.addRectangle(green);
+		
+		drawer.addRectangle(Rectangle.intersection(blue, green).setColour(1, 0, 0, 0.5f));
+		
+		drawer.draw();
+		
 	}
+	
 
 }
