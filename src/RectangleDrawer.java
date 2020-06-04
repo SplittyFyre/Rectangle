@@ -24,7 +24,7 @@ public class RectangleDrawer {
     		g.setColor(Color.black);
     		if (hoverptr != null) {
     			str = hoverptr.toString();
-    			g.setColor(new Color(hoverptr.getColour().getRed(), hoverptr.getColour().getGreen(), hoverptr.getColour().getBlue(), 255));
+    			g.setColor(new Color(hoverptr.getColour().getRed() / 2, hoverptr.getColour().getGreen() / 2, hoverptr.getColour().getBlue() / 2, 255));
     		}
     		g.drawString(str, 100, 100);
     	}
@@ -41,12 +41,12 @@ public class RectangleDrawer {
 
 			int mx = e.getX();
 			int my = e.getY();
-			
+						
 			for (int i = rectangles.size() - 1; i >= 0; i--) {
 				Rectangle r = rectangles.get(i);
 
 				int l = r.getLeft() + (width / 2);
-				int b = r.getBottom() + (height / 2);
+				int b = r.getBottom() + (height / 2) + yOffset;
 				
 				// check mouse-rectangle intersect
 			    if (mx >= l && mx <= l + r.getWidth() &&
@@ -66,10 +66,12 @@ public class RectangleDrawer {
 	private Rectangle hoverptr = null;
 	
 	private final int width, height;
+	private final int yOffset;
 	
-	public RectangleDrawer(int width, int height) {
+	public RectangleDrawer(int width, int height, int yOffset) {
 		this.width = width;
 		this.height = height;
+		this.yOffset = yOffset;
 	}
 
 	
@@ -86,6 +88,7 @@ public class RectangleDrawer {
 	    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    window.setSize(width, height);
 	    MyFrame mf = new MyFrame();
+	    mf.setSize(width, height);
 	    window.getContentPane().add(mf);
 	    window.addMouseMotionListener(mf);
 	    window.setVisible(true);

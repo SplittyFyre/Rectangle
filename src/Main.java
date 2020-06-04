@@ -14,8 +14,12 @@ public class Main {
 		System.out.println(Rectangle.totalPerimeter(blue, green));
 		
 		
+		// IMPORTANT:
+		// due to Java bugs regarding my window manager (i3-wm),
+		// I had to set this value to get the rectangle selecting to work properly
+		RectangleDrawer drawer = new RectangleDrawer(600, 600, 20);// <<<<<<-----|
+		// you may need to change it (try setting it from 20 to 0) 
 		
-		RectangleDrawer drawer = new RectangleDrawer(600, 600);
 		drawer.addRectangle(blue);
 		drawer.addRectangle(green);
 		
